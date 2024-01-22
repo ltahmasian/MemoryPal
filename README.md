@@ -33,5 +33,5 @@
   - Repeat and challenge yourself to reach higher levels!
 
 
-Happy playing and good luck challenging your memory with MemoryPal!
+## Happy playing and good luck challenging your memory with MemoryPal!
 
