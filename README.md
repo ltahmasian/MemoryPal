@@ -31,7 +31,3 @@
   - Click or select the tiles in the correct order to progress to the next level.
 
   - Repeat and challenge yourself to reach higher levels!
-
-
-## Happy playing and good luck challenging your memory with MemoryPal!
-
