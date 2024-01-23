@@ -1,0 +1,87 @@
+@font-face {
+  font-family: "gilroyLight";
+  src: url(fonts/Gilroy-Light.otf) format("woff");
+}
+
+@font-face {
+  font-family: "gilroyBold";
+  src: url(fonts/Gilroy-ExtraBold.otf) format("woff");
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #5271ff;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.main-container,
+.menu-logo,
+.menu-start-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container {
+  width: 18.75rem;
+  /*border: 2px solid black;*/
+  height: 100%;
+  gap: 28px;
+}
+
+.menu-logo {
+  height: 6.25rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 6.25rem;
+  border-radius: 10px;
+}
+
+.menu-logo img {
+  height: 75%;
+  width: 75%;
+}
+
+.menu-title {
+  font-size: 2.8rem;
+  line-height: 1.4;
+  font-family: "gilroyBold";
+  color: white;
+}
+
+.menu-start-btn {
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 14.375rem;
+  height: 3.125rem;
+  color: white;
+  font-family: "gilroyLight";
+  border-radius: 10px;
+  transition: 0.1s all;
+}
+
+.menu-start-btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.1s all;
+  cursor: pointer;
+}
+
+.caption {
+  font-family: "gilroyLight";
+  text-decoration: none;
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 6.25rem;
+  color: white;
+  opacity: 0.75;
+  transition: 0.1s all;
+}
+
+.caption:hover {
+  transition: 0.1s all;
+  opacity: 1;
+}
