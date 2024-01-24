@@ -40,6 +40,7 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
   width: 6.25rem;
   border-radius: 10px;
+  transition: 0.2s;
 }
 
 .menu-logo img {
@@ -52,6 +53,8 @@ body {
   line-height: 1.4;
   font-family: "gilroyBold";
   color: white;
+  transition: 0.2s;
+  font-weight: 100;
 }
 
 .menu-start-btn {
@@ -62,6 +65,8 @@ body {
   font-family: "gilroyLight";
   border-radius: 10px;
   transition: 0.1s all;
+  letter-spacing: 1.5px;
+  font-weight: 600;
 }
 
 .menu-start-btn:hover {
@@ -83,5 +88,26 @@ body {
 
 .caption:hover {
   transition: 0.1s all;
+  opacity: 1;
+}
+
+.level-container {
+  width: 17.813rem;
+  height: 3.125rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-family: "gilroyLight";
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.fade-in {
   opacity: 1;
 }
