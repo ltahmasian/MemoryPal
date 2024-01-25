@@ -84,6 +84,7 @@ body {
   color: white;
   opacity: 0.75;
   transition: 0.1s all;
+  position: fixed;
 }
 
 .caption:hover {
@@ -104,10 +105,56 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
   transition: opacity 0.2s ease-in-out;
+  position: relative;
 }
 
 .fade-in {
   opacity: 1;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tile {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  height: 5.625rem;
+  width: 5.625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+
+.btn-container {
+  display: flex;
+  gap: 15px;
+}
+
+.start-lvl-btn,
+.reset-lvl-btn {
+  width: 8.438rem;
+  height: 3.125rem;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  font-family: "gilroyLight";
+  letter-spacing: 2px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.1s all;
+}
+
+.start-lvl-btn:hover,
+.reset-lvl-btn:hover {
+  transition: 0.1s all;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }
