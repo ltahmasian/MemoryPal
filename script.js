@@ -15,6 +15,7 @@ class MemoryPal {
     this.tileId = null;
     this.btnContainer = null;
     this.level = 0;
+    this.numLoops = 2;
 
     this.startLevel = this.startLevel.bind(this);
     this.resetGame = this.resetGame.bind(this);
@@ -72,8 +73,18 @@ class MemoryPal {
     this.mainContainer.appendChild(this.btnContainer);
   }
 
-  startLevel() {
-    // Implement the logic for starting a level
+  async startLevel() {
+    for (let i = 0; i < this.numLoops; i++) {
+      this.levelContainer.textContent = `Level ${this.level + 1}`;
+      let randomID = Math.floor(Math.random() * 9);
+      this.gameChoices.push(randomID);
+      //console.log(this.gameChoices);
+      let randomTile = document.getElementById(`tile${randomID}`);
+      //console.log(randomTile);
+      randomTile.textContent = "😊";
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      randomTile.textContent = "";
+    }
   }
 
   resetGame() {
