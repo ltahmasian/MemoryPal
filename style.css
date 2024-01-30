@@ -130,6 +130,13 @@ body {
   justify-content: center;
   align-items: center;
   font-size: 50px;
+  transition: 0.1s all;
+}
+
+.tile:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: 0.1s all;
+  cursor: pointer;
 }
 
 .btn-container {
