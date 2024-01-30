@@ -18,7 +18,7 @@ class MemoryPal {
     this.numLoops = 2;
 
     this.startLevel = this.startLevel.bind(this);
-    this.resetGame = this.resetGame.bind(this);
+    this.resetLevel = this.resetLevel.bind(this);
 
     this.menuStartBtn.addEventListener("click", this.startGame.bind(this));
   }
@@ -35,7 +35,7 @@ class MemoryPal {
   loadLevelContainer() {
     this.levelContainer = document.createElement("div");
     this.levelContainer.classList.add("level-container");
-    this.levelContainer.textContent = `Level ${this.level}`;
+    this.levelContainer.textContent = "Click Start to Begin";
     this.mainContainer.insertBefore(this.levelContainer, this.gameBoard);
   }
 
@@ -67,18 +67,19 @@ class MemoryPal {
     this.resetLvlBtn = document.createElement("button");
     this.resetLvlBtn.classList.add("reset-lvl-btn");
     this.resetLvlBtn.textContent = "Reset";
-    this.resetLvlBtn.addEventListener("click", this.reset);
+    this.resetLvlBtn.addEventListener("click", this.resetLevel);
     this.btnContainer.appendChild(this.startLvlBtn);
     this.btnContainer.appendChild(this.resetLvlBtn);
     this.mainContainer.appendChild(this.btnContainer);
   }
 
-  async startLevel() {
-    for (let i = 0; i < this.numLoops; i++) {
+  async generateTiles(loopCount) {
+    this.gameChoices = [];
+    for (let i = 0; i < loopCount; i++) {
       this.levelContainer.textContent = `Level ${this.level + 1}`;
       let randomID = Math.floor(Math.random() * 9);
       this.gameChoices.push(randomID);
-      //console.log(this.gameChoices);
+      console.log(this.gameChoices);
       let randomTile = document.getElementById(`tile${randomID}`);
       //console.log(randomTile);
       randomTile.textContent = "😊";
@@ -87,8 +88,70 @@ class MemoryPal {
     }
   }
 
-  resetGame() {
-    // Implement the logic for resetting the game
+  handleUserClicks() {
+    this.userChoices = [];
+    this.levelContainer.textContent = "Your turn.";
+    const self = this;
+    this.gameBoard.addEventListener("click", function handleClick(event) {
+      if (event.target.classList.contains("tile")) {
+        let clickedTileId = event.target.id;
+        self.userChoices.push(Number(clickedTileId.slice(-1)));
+        console.log(self.userChoices);
+
+        if (self.userChoices.length === self.gameChoices.length) {
+          self.gameBoard.removeEventListener("click", handleClick); // Remove the click event listener
+          self.compareArrays();
+        }
+      }
+    });
+  }
+
+  handleClick(event) {
+    this.userChoices = [];
+    let clickedTileId = event.target.id;
+    this.userChoices.push(Number(clickedTileId.slice(-1)));
+    console.log(this.userChoices);
+
+    if (this.userChoices.length === this.gameChoices.length) {
+      this.compareArrays();
+    }
+  }
+
+  compareArrays() {
+    if (
+      this.userChoices.length === this.gameChoices.length &&
+      this.userChoices.every(
+        (value, index) => value === this.gameChoices[index]
+      )
+    ) {
+      console.log("Arrays match!");
+      this.userChoices = [];
+      this.gameChoices = [];
+      this.numLoops++;
+      this.level++;
+      this.startLevel();
+    } else {
+      console.log("Arrays do not match.");
+      this.userChoices = [];
+      this.gameChoices = [];
+      this.numLoops = 2;
+      this.level = 0;
+      this.levelContainer.textContent = "Game over. Start again.";
+    }
+  }
+
+  async startLevel() {
+    this.userChoices = [];
+    this.gameChoices = [];
+    await this.generateTiles(this.numLoops);
+    this.handleUserClicks();
+  }
+
+  resetLevel() {
+    for (let i = 0; i < 9; i++) {
+      let tileToErase = (document.getElementById(`tile${i}`).textContent = "");
+    }
+    this.levelContainer.textContent = "Click Start to Begin";
   }
 
   startGame() {
