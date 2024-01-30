@@ -91,7 +91,7 @@ class MemoryPal {
 
   handleUserClicks() {
     this.userChoices = [];
-    this.levelContainer.textContent = "Your turn.";
+    this.levelContainer.textContent = "Your turn";
     const self = this;
     this.gameBoard.addEventListener("click", function handleClick(event) {
       if (event.target.classList.contains("tile")) {
