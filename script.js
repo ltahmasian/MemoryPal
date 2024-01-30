@@ -75,14 +75,15 @@ class MemoryPal {
 
   async generateTiles(loopCount) {
     this.gameChoices = [];
+    const emojis = ["😊", "😍", "🥳", "🎉", "👏", "🌟", "🚀", "🎈", "❤️"];
     for (let i = 0; i < loopCount; i++) {
       this.levelContainer.textContent = `Level ${this.level + 1}`;
       let randomID = Math.floor(Math.random() * 9);
       this.gameChoices.push(randomID);
       console.log(this.gameChoices);
       let randomTile = document.getElementById(`tile${randomID}`);
-      //console.log(randomTile);
-      randomTile.textContent = "😊";
+      let randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      randomTile.textContent = randomEmoji;
       await new Promise((resolve) => setTimeout(resolve, 1000));
       randomTile.textContent = "";
     }
