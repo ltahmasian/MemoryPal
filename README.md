@@ -1,4 +1,4 @@
-# MemoryPal
+# MemoryPal - https://memorypal.io/
 
   Welcome to MemoryPal - the ultimate memory challenge game!
 
